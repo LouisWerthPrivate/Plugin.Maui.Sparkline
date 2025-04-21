@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:sparkline="clr-namespace:Plugin.Maui.Sparkline;assembly=Plugin.Maui.SparkLine"
+             xmlns:mauiSparkline="clr-namespace:MauiSparkline"
+             xmlns:models="clr-namespace:MauiSparkline.Models"
+             x:DataType="mauiSparkline:MainPageViewModel"
+             Title="Stability"
+             x:Class="MauiSparkline.MainPage">
+     <ContentPage.Resources>
+         <ResourceDictionary>
+
+         </ResourceDictionary>
+     </ContentPage.Resources>
+    <ScrollView>
+        <CollectionView ItemsSource="{Binding Sparklines}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="models:SparklineItem">
+                        <Grid RowDefinitions="20,20" ColumnDefinitions="50, *, 100" Margin="0,5,5,5">
+                            <Image Grid.Row="0" Grid.RowSpan="2" Aspect="AspectFit" HorizontalOptions="Fill" WidthRequest="30" HeightRequest="35" VerticalOptions="Start">
+                                <Image.Source>
+                                    <FontImageSource Glyph="{Binding Image}" FontFamily="FluentUI" Color="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}"/>
+                                </Image.Source>
+                            </Image>
+                            <Label Grid.Row="0" Grid.Column="1" Text="{Binding Name}" FontSize="12" HorizontalOptions="Start" FontAttributes="Bold" FontFamily="OpenSansSemibold"/>
+                            <Label Grid.Row="1" Grid.Column="1" Text="{Binding Description}" FontSize="12" HorizontalOptions="Start" LineBreakMode="TailTruncation"/>
+                            <sparkline:SparklineView 
+                                WidthRequest="80"
+                                Grid.Column="2"
+                                Grid.RowSpan="2"
+                                HeightRequest="40"
+                                Values="{Binding Sparkies }"
+                                LineColor="{Binding LineColor}"
+                                HorizontalOptions="Start"
+                                Threshold="{Binding Threshold}"
+                                ThresholdLineColor="Red"/>
+                        </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+        
+      </ScrollView>
+
+</ContentPage>
