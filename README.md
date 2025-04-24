@@ -10,7 +10,10 @@ A simple and lightweight Sparkline chart control for .NET MAUI. Easily visualize
 - Supports binding to observable collections
 - Lightweight and fast
 
+<img src="images/screenshot.png" alt="Screenshot" width="400" height="200">
+
 ## Installation
+(pending - use the code for now)
 
 Add the NuGet package to your .NET MAUI project:
 
